@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.mum.cs.cs401.controller.SimpleController">
    <children>
       <GridPane layoutX="0" layoutY="0">
         <columnConstraints>
@@ -21,6 +20,7 @@
          <children>
             <Label text="Member" />
             <Label text="Name" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#onSubmit" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
