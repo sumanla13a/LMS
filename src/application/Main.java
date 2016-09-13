@@ -1,6 +1,6 @@
 package application;
 
-import java.awt.Label;
+
 import java.io.IOException;
 
 import javafx.application.Application;
