@@ -3,7 +3,7 @@
  * Use copy/paste to copy paste this code into your favorite IDE
  **/
 
-package edu.mum.cs.cs401.controller;
+package edu.mum.cs.cs401.main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 
-public class SimpleController
+public class MemberUIController
     implements Initializable {
 
     @FXML //  fx:id="myButton"
