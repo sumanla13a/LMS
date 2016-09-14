@@ -4,21 +4,26 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import edu.mum.cs.cs401.controller.MemberController;
+import edu.mum.cs.cs401.controller.UserController;
+import edu.mum.cs.cs401.entity.User;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class LoginUIController implements Initializable {
-//    private Button myButton; // Value injected by FXMLLoader
-
-    @Override // This method is called by the FXMLLoader when initialization is complete
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-//        assert myButton != null : "fx:id=\"myButton\" was not injected: check your FXML file 'simple.fxml'.";
-
-        // initialize your logic here: all @FXML variables will have been injected
+	@FXML
+	private TextField userNameText;
+	
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
     }
     
     public void onSubmit(ActionEvent event) {
-        System.out.println("Login info submit");
+        UserController userCtrl = UserController.getInstance();
+        
+        User user = userCtrl.getById(userNameText.getText());
+        
+        Main.setCurrentUser(user);
     }
 }

@@ -6,6 +6,20 @@ public class User {
 	private String fullName;
 	private String role;
 	
+	public User(){}
+	
+	public User(String userName, String password, String fullName, String role) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.fullName = fullName;
+		this.role = role;
+	}
+	
+	public boolean hasRole(String role){
+		return getRole().contains(role);
+	}
+
 	public String getUserName() {
 		return userName;
 	}
