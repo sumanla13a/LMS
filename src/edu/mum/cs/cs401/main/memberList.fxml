@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.mum.cs.cs401.main.MemberListUIController">
+   <children>
+      <BorderPane layoutX="0" layoutY="0" prefHeight="376.0" prefWidth="524.0">
+         <top>
+            <Label text="Member List" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <TableView fx:id="tblMembers" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="firstNameColumn" prefWidth="105.0" text="First Name" />
+                <TableColumn fx:id="lastNameColumn" prefWidth="103.0" text="Last Name" />
+              </columns>
+            </TableView>
+         </center>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#onSubmit" text="Refresh" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
 </AnchorPane>
-

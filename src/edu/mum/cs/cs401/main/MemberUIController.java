@@ -47,17 +47,12 @@ public class MemberUIController implements Initializable {
 		Address address = new Address(streetAddressText.getText(), cityAddressText.getText(),
 				stateAddressText.getText(), zipAddressText.getText());
 
-		Member member = new Member();
-		member.setId(idText.getText());
-		member.setFirstName(firstNameText.getText());
-		member.setLastName(lastNameText.getText());
-		member.setPhoneNumber(phoneNumberText.getText());
-		member.setAddress(address);
+		Member member = new Member(idText.getText(), firstNameText.getText(), lastNameText.getText(), phoneNumberText.getText(), address);
 
 		ctrl.addNewMember(member);
 
 		for (Member m : ctrl.getAll()) {
-			System.out.println(m.getFirstName());
+			System.out.println(m.toString());
 		}
 	}
 

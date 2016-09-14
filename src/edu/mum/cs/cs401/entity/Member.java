@@ -4,9 +4,18 @@ public class Member {
 	private String id;
 	private String firstName;
 	private String lastName;
-	private Address address;
 	private String phoneNumber;
+	private Address address;
 	
+	public Member(String id, String firstName, String lastName, String phoneNumber, Address address) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+	}
+
 	public String getId() {
 		return id;
 	}
