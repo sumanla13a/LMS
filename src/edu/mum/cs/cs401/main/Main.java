@@ -45,7 +45,7 @@ public class Main extends Application {
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
 		Parent memberList = FXMLLoader.load(Main.class.getResource("memberList.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
-		Parent bookCopy = FXMLLoader.load(Main.class.getResource("bookCopy.fxml"));
+		Parent bookCopy = FXMLLoader.load(Main.class.getResource("Book.fxml"));
 
 		Util.showModal(modalStage, "Login", login);
 
@@ -120,7 +120,7 @@ public class Main extends Application {
 
 		// Book Menu
 		Menu menuBook = new Menu("Book");
-		MenuItem addBookCopy = new MenuItem("Add Book Copy", new ImageView(new Image("img/add.png")));
+		MenuItem addBookCopy = new MenuItem("Look or add book", new ImageView(new Image("img/add.png")));
 		menuBook.getItems().addAll(addBookCopy);
 
 		addBookCopy.setOnAction(new EventHandler<ActionEvent>() {
