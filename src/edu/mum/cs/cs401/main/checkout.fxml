@@ -20,6 +20,7 @@
           <RowConstraints maxHeight="210.0" minHeight="4.0" prefHeight="37.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -29,7 +30,7 @@
                </font></Label>
             <Label text="Book ISBN" GridPane.rowIndex="2" />
             <Label text="Checkout Date" GridPane.rowIndex="3" />
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
                   <Button fx:id="checkoutBtn" mnemonicParsing="false" onAction="#onCheckout" text="Submit" textFill="#042bc9">
                      <HBox.margin>
@@ -43,6 +44,11 @@
             <DatePicker fx:id="checkoutDate" prefHeight="25.0" prefWidth="286.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Member Id" GridPane.rowIndex="1" />
             <TextField fx:id="memberIdText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="errorLabel" textFill="#f20909" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
