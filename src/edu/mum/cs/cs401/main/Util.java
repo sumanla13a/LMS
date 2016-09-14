@@ -23,7 +23,7 @@ public class Util {
 		UserController userCtrl = UserController.getInstance();
 		MemberController memberCtrl = MemberController.getInstance();
 				
-		userCtrl.addNew(new User("super", "super", "Yoseph Solomon", "admin lib"));
+		userCtrl.addNew(new User("super", "super", "Yoseph Solomon", "admin,lib"));
 		userCtrl.addNew(new User("admin", "admin", "Suman Lama", "admin"));
 		userCtrl.addNew(new User("lib", "lib", "Alex Xie", "lib"));
 

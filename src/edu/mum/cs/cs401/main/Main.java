@@ -39,15 +39,20 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
+		
 		Util.generateTestData();
 
 		Parent login = FXMLLoader.load(Main.class.getResource("login.fxml"));
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
 		Parent memberList = FXMLLoader.load(Main.class.getResource("memberList.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
+		Parent book = FXMLLoader.load(Main.class.getResource("book.fxml"));
 		Parent bookCopy = FXMLLoader.load(Main.class.getResource("bookCopy.fxml"));
 
 		Util.showModal(modalStage, "Login", login);
+		modalStage.setOnCloseRequest(e -> primaryStage.close());
+		
+		if(getCurrentUser() == null) System.exit(0);
 
 		primaryStage.setTitle("Library Management System : " + "(Roles: " + getCurrentUser().getRole() + ")");
 		Screen screen = Screen.getPrimary();
@@ -120,8 +125,17 @@ public class Main extends Application {
 
 		// Book Menu
 		Menu menuBook = new Menu("Book");
+		MenuItem addBook = new MenuItem("Add Book", new ImageView(new Image("img/add.png")));
 		MenuItem addBookCopy = new MenuItem("Add Book Copy", new ImageView(new Image("img/add.png")));
-		menuBook.getItems().addAll(addBookCopy);
+		menuBook.getItems().addAll(addBook, addBookCopy);
+
+		addBook.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(book);
+			}
+		});
 
 		addBookCopy.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
