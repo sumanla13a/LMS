@@ -31,6 +31,12 @@ public class MemberListUIController implements Initializable {
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("lastName"));
 
+		tblMembers.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+		    if (newSelection != null) {
+		        System.out.println(newSelection);
+		    }
+		});
+		
 		load();
 	}
 
