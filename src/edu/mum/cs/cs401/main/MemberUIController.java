@@ -11,15 +11,20 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
 
 public class MemberUIController
     implements Initializable {
 
-    @FXML //  fx:id="myButton"
-    private Button myButton; // Value injected by FXMLLoader
-
+	@FXML private Button myButton; // Value injected by FXMLLoader
+	@FXML private TextField firstNameText;
+	@FXML private TextField lastNameText;
+	@FXML private TextField streetAddressText;
+	@FXML private TextField cityAddressText;
+	@FXML private TextField zipAddressText;
+	@FXML private TextField phoneNoText;
+	@FXML private TextField stateAddressText;
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -30,7 +35,13 @@ public class MemberUIController
     }
     
     public void onSubmit(ActionEvent event) {
-        System.out.println("That was easy, wasn't it?");
+        System.out.println(firstNameText.getText());
+        System.out.println(lastNameText.getText());
+        System.out.println(phoneNoText.getText());
+        System.out.println(streetAddressText.getText());
+        System.out.println(cityAddressText.getText());
+        System.out.println(stateAddressText.getText());
+        System.out.println(zipAddressText.getText());
     }
 
 }

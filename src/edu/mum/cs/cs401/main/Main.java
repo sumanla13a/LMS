@@ -10,6 +10,9 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -21,9 +24,19 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		stage.setTitle("Menu Sample");
+		Screen screen = Screen.getPrimary();
+		Rectangle2D bounds = screen.getVisualBounds();
+
+		stage.setX(bounds.getMinX());
+		stage.setY(bounds.getMinY());
+		stage.setWidth(bounds.getWidth());
+		stage.setHeight(bounds.getHeight());
+
 		VBox root = new VBox();
+//		root.setAlignment(Pos.CENTER_LEFT);
 		VBox menuContainer = new VBox();
 		VBox formContainer = new VBox();
+		formContainer.setAlignment(Pos.CENTER);
 		root.getChildren().add(menuContainer);
 		root.getChildren().add(formContainer);
 		Scene scene = new Scene(root, 400, 350);
@@ -54,7 +67,8 @@ public class Main extends Application {
 
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
-
+		
+		formContainer.getChildren().add(checkout);
 		add.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
