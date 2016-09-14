@@ -60,17 +60,21 @@ public class Main extends Application {
 		MenuItem btnCheckout = new MenuItem("Add");
 		menuCheckout.getItems().addAll(btnCheckout);
 
-		Menu menuView = new Menu("Add Book Copy");
+		Menu menuBook = new Menu("Book");
+		MenuItem addBookCopy = new MenuItem("Add Book Copy", new ImageView(new Image("img/add.png")));
+		menuBook.getItems().addAll(addBookCopy);
 
-		menuBar.getMenus().addAll(menuCheckout, menuEdit, menuView);
+		menuBar.getMenus().addAll(menuCheckout, menuEdit, menuBook);
 
 		menuContainer.getChildren().addAll(menuBar);
 
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
 		Parent memberList = FXMLLoader.load(Main.class.getResource("memberList.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
+		Parent bookCopy = FXMLLoader.load(Main.class.getResource("bookCopy.fxml"));
 		
 		formContainer.getChildren().add(checkout);
+		
 		add.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
@@ -92,6 +96,14 @@ public class Main extends Application {
 			public void handle(ActionEvent t) {
 				formContainer.getChildren().clear();
 				formContainer.getChildren().add(checkout);
+			}
+		});
+
+		addBookCopy.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(bookCopy);
 			}
 		});
 
