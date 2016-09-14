@@ -53,7 +53,8 @@ public class Main extends Application {
 
 		Menu menuEdit = new Menu("Member");
 		MenuItem add = new MenuItem("Add", new ImageView(new Image("img/add.png")));
-		menuEdit.getItems().addAll(add);
+		MenuItem listMember = new MenuItem("Member List", new ImageView(new Image("img/add.png")));
+		menuEdit.getItems().addAll(add, listMember);
 
 		Menu menuCheckout = new Menu("Check Out");
 		MenuItem btnCheckout = new MenuItem("Add");
@@ -66,6 +67,7 @@ public class Main extends Application {
 		menuContainer.getChildren().addAll(menuBar);
 
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
+		Parent memberList = FXMLLoader.load(Main.class.getResource("memberList.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
 		
 		formContainer.getChildren().add(checkout);
@@ -74,6 +76,14 @@ public class Main extends Application {
 			public void handle(ActionEvent t) {
 				formContainer.getChildren().clear();
 				formContainer.getChildren().add(member);
+			}
+		});
+
+		listMember.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(memberList);
 			}
 		});
 
