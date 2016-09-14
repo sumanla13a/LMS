@@ -15,8 +15,10 @@ public class Book {
 	public String getISBNNumber() {
 		return this.ISBNNumber;
 	}
-	public void setISBNNumber(String iSBNNumber) {
-		this.ISBNNumber = iSBNNumber;
+
+	
+	public void setISBNNumber(String ISBN) {
+		this.ISBNNumber = ISBN;
 	}
 	public boolean isAvailability() {
 		return availability;
@@ -24,5 +26,17 @@ public class Book {
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
 	}
-
+	
+	public Book(String ISBN, String title, boolean availability) {
+		this.ISBNNumber = ISBN;
+		this.title = title;
+		this.availability = availability; 
+	}
+	public Book(){}
+	
+	@Override
+	public String toString() {
+		return "Book [title=" + title + ", ISBNNumber=" + ISBNNumber + ", availability=" + availability + "]";
+	}
+	
 }

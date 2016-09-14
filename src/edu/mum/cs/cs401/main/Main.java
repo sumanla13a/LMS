@@ -21,6 +21,10 @@ public class Main extends Application {
 	private static User CurrentUser;
 
 	private static Stage modalStage = new Stage();
+	private static Stage primaryStage;
+	private static Menu menuMember;
+	private static Menu menuCheckout;
+	private static Menu menuUser;
 
 	public static User getCurrentUser() {
 		return CurrentUser;
@@ -29,27 +33,30 @@ public class Main extends Application {
 	public static void setCurrentUser(User currentUser) {
 		CurrentUser = currentUser;
 		modalStage.close();
+		resetMenu();
 	}
 
 	@Override
-	public void start(Stage stage) throws IOException {
+	public void start(Stage primaryStage) throws IOException {
+		this.primaryStage = primaryStage;
 		Util.generateTestData();
+
 		Parent login = FXMLLoader.load(Main.class.getResource("login.fxml"));
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
 		Parent memberList = FXMLLoader.load(Main.class.getResource("memberList.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
-		Parent bookCopy = FXMLLoader.load(Main.class.getResource("bookCopy.fxml"));
+		Parent bookCopy = FXMLLoader.load(Main.class.getResource("Book.fxml"));
 
 		Util.showModal(modalStage, "Login", login);
-		
-		stage.setTitle("Library Management System : " + "(Roles: " + getCurrentUser().getRole() + ")");
+
+		primaryStage.setTitle("Library Management System : " + "(Roles: " + getCurrentUser().getRole() + ")");
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 
-		stage.setX(bounds.getMinX());
-		stage.setY(bounds.getMinY());
-		stage.setWidth(bounds.getWidth());
-		stage.setHeight(bounds.getHeight());
+		primaryStage.setX(bounds.getMinX());
+		primaryStage.setY(bounds.getMinY());
+		primaryStage.setWidth(bounds.getWidth());
+		primaryStage.setHeight(bounds.getHeight());
 
 		VBox root = new VBox();
 		// root.setAlignment(Pos.CENTER_LEFT);
@@ -70,52 +77,50 @@ public class Main extends Application {
 
 		MenuBar menuBar = new MenuBar();
 
-		//Member Menu
-		if (getCurrentUser().hasRole("admin")) {
-			Menu menuEdit = new Menu("Member");
-			MenuItem add = new MenuItem("Add", new ImageView(new Image("img/add.png")));
-			MenuItem listMember = new MenuItem("Member List", new ImageView(new Image("img/add.png")));
-			menuEdit.getItems().addAll(add, listMember);
+		// Member Menu
+		Menu menuMember = new Menu("Member");
+		Main.menuMember = menuMember;
+		MenuItem add = new MenuItem("Add", new ImageView(new Image("img/add.png")));
+		MenuItem listMember = new MenuItem("Member List", new ImageView(new Image("img/add.png")));
+		menuMember.getItems().addAll(add, listMember);
 
-			add.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent t) {
-					formContainer.getChildren().clear();
-					formContainer.getChildren().add(member);
-				}
-			});
+		add.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(member);
+			}
+		});
 
-			listMember.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent t) {
-					formContainer.getChildren().clear();
-					formContainer.getChildren().add(memberList);
-				}
-			});
-			menuBar.getMenus().addAll(menuEdit);
-			formContainer.getChildren().add(member);
-		}
+		listMember.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(memberList);
+			}
+		});
+		menuBar.getMenus().addAll(menuMember);
+		formContainer.getChildren().add(member);
 
-		//Checkout Menu
-		if (getCurrentUser().hasRole("lib")) {
-			Menu menuCheckout = new Menu("Check Out");
-			MenuItem btnCheckout = new MenuItem("Add");
-			menuCheckout.getItems().addAll(btnCheckout);
+		// Checkout Menu
+		Menu menuCheckout = new Menu("Check Out");
+		Main.menuCheckout = menuCheckout;
+		MenuItem btnCheckout = new MenuItem("Add");
+		menuCheckout.getItems().addAll(btnCheckout);
 
-			btnCheckout.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent t) {
-					formContainer.getChildren().clear();
-					formContainer.getChildren().add(checkout);
-				}
-			});
-			menuBar.getMenus().addAll(menuCheckout);
-			formContainer.getChildren().add(checkout);
-		}
+		btnCheckout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(checkout);
+			}
+		});
+		menuBar.getMenus().addAll(menuCheckout);
+		formContainer.getChildren().add(checkout);
 
-		//Book Menu
+		// Book Menu
 		Menu menuBook = new Menu("Book");
-		MenuItem addBookCopy = new MenuItem("Add Book Copy", new ImageView(new Image("img/add.png")));
+		MenuItem addBookCopy = new MenuItem("Look or add book", new ImageView(new Image("img/add.png")));
 		menuBook.getItems().addAll(addBookCopy);
 
 		addBookCopy.setOnAction(new EventHandler<ActionEvent>() {
@@ -127,8 +132,9 @@ public class Main extends Application {
 		});
 		menuBar.getMenus().addAll(menuBook);
 
-		//User Menu
+		// User Menu
 		Menu menuUser = new Menu(getCurrentUser().getFullName());
+		Main.menuUser = menuUser;
 		MenuItem addLogout = new MenuItem("Logout", new ImageView(new Image("img/add.png")));
 		menuUser.getItems().addAll(addLogout);
 
@@ -139,11 +145,19 @@ public class Main extends Application {
 			}
 		});
 		menuBar.getMenus().addAll(menuUser);
-		
 
 		menuContainer.getChildren().addAll(menuBar);
-		stage.setScene(scene);
-		stage.show();
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	public static void resetMenu() {
+		if (menuUser != null) {
+			primaryStage.setTitle("Library Management System : " + "(Roles: " + getCurrentUser().getRole() + ")");
+			menuUser.setText(getCurrentUser().getFullName());
+			menuMember.setVisible(getCurrentUser().hasRole("admin"));
+			menuCheckout.setVisible(getCurrentUser().hasRole("lib"));
+		}
 	}
 
 	public static void main(String[] args) {
