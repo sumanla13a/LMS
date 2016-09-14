@@ -18,4 +18,8 @@ public class CheckoutRecord {
 	public void setCurrentMemberId(String currentMemberId) {
 		this.currentMemberId = currentMemberId;
 	}
+	@Override
+	public String toString() {
+		return "CheckoutRecord [checkoutEntryList=" + checkoutEntryList + ", currentMemberId=" + currentMemberId + "]";
+	}
 }

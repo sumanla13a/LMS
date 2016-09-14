@@ -35,7 +35,11 @@ public class BookController {
 	public Book getBookByISBN(String ISBN) {
 		return bookAccess.get(ISBN);
 	}
-
+	
+	public void addBook(Book book) {
+		bookAccess.add(book.getISBNNumber(), book);
+	}
+	
 	public boolean addBookCopy(String isbn) {
 		Book book = bookAccess.get(isbn);
 		if (book == null) {
@@ -53,5 +57,6 @@ public class BookController {
 		bookCopyAccess.update(isbn, new Integer(updateNum));
 		return true;
 	}
-
+	
+//	public BookCopy getBookCopyByNumber()
 }

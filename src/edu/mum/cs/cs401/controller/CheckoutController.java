@@ -27,10 +27,7 @@ public class CheckoutController {
 			checkoutRecord.setCheckoutEntryList(initialList);
 			dataAccess.add(entry.getCurrentMemberId(), checkoutRecord);
 		}
-		
-		for(int i = 0, len = dataAccess.get(entry.getCurrentMemberId()).getCheckoutEntryList().size(); i<len; i++) {
-			System.out.println(dataAccess.get(entry.getCurrentMemberId()).getCheckoutEntryList().get(i));
-		}
+
 		return entry;
 	}
 

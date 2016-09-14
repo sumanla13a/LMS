@@ -7,14 +7,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+//import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import edu.mum.cs.cs401.controller.CheckoutController;
-import edu.mum.cs.cs401.entity.CheckoutEntryRecord;
 import edu.mum.cs.cs401.controller.MemberController;
 import edu.mum.cs.cs401.controller.BookController;
+import edu.mum.cs.cs401.entity.CheckoutEntryRecord;
 public class CheckoutUIController implements Initializable {
 	MemberController memberController = MemberController.getInstance();
 	CheckoutController checkoutController = CheckoutController.getInstance();
@@ -48,7 +48,9 @@ public class CheckoutUIController implements Initializable {
 			if(memberController.getMemberById(memberId) != null) {
 				if(bookController.getBookByISBN(bookISBN) != null) {
 					CheckoutEntryRecord newRecord = new CheckoutEntryRecord();
-					newRecord.setISBNNumber(bookISBN);
+//					get copy of a book
+//					BookCopy newBookCopy = bookCopyController.getBook();
+//					newRecord.setISBNNumber(newBookCopy);
 					newRecord.setCheckoutDate(coutDate);
 					newRecord.setCurrentMemberId(memberId);
 					newRecord.setDueDate(dDate);
