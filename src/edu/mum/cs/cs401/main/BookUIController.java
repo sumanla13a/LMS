@@ -38,8 +38,7 @@ public class BookUIController implements Initializable {
         System.out.println("look " + lookUpTextField.getText());
         
         String ISBNStr = lookUpTextField.getText(); 
-        Integer ISBN = new Integer(ISBNStr); 
-        Book book = bookContr.getBookAccess().get(ISBN);
+        Book book = bookContr.getBookAccess().get(ISBNStr);
         LookResultLabel.setText(book.toString());
     }
     
@@ -48,13 +47,11 @@ public class BookUIController implements Initializable {
         System.out.println("add book copy ISBN: " + addBookTextField.getText());
         
         String ISBNStr = addBookTextField.getText();
-//        String ISBNStr = "100";
-        Integer ISBN = new Integer(ISBNStr); 
-        System.out.println("isbn is " + ISBN);
+        System.out.println("isbn is " + ISBNStr);
         
-        boolean result =  bookContr.addBookCopy(ISBN);
+        boolean result =  bookContr.addBookCopy(ISBNStr);
         if (result == true) {
-        	Book book = bookContr.getBookAccess().get(ISBN);
+        	Book book = bookContr.getBookAccess().get(ISBNStr);
         	addBookResultLabel.setText(book.toString());
         } else {
         	addBookResultLabel.setText("book not fund");

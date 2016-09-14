@@ -2,39 +2,38 @@ package edu.mum.cs.cs401.controller;
 import edu.mum.cs.cs401.dataaccess.DataAccess;
 import edu.mum.cs.cs401.dataaccess.DataAccessImpl;
 import edu.mum.cs.cs401.entity.Book;
-//import edu.mum.cs.cs401.entity.BookCopy;
 
 public class BookController {
 	private static BookController instance = new BookController();
 
-	private DataAccess<Integer, Book> bookAccess = new DataAccessImpl<Integer, Book>();
-	private DataAccess<Integer, Integer> bookCopyAccess = new DataAccessImpl<Integer, Integer>();
+	private DataAccess<String, Book> bookAccess = new DataAccessImpl<String, Book>();
+	private DataAccess<String, Integer> bookCopyAccess = new DataAccessImpl<String, Integer>();
 	
 	private BookController() {
-		Book book1 = new Book(100, "title0", true);
-		Book book2 = new Book(101, "title1", true);
-		Book book3 = new Book(102, "title2", true);
+		Book book1 = new Book("100", "title0", true);
+		Book book2 = new Book("101", "title1", true);
+		Book book3 = new Book("102", "title2", true);
 		
-		bookAccess.add(book1.getNumberISBN(), book1);
-		bookAccess.add(book2.getNumberISBN(), book2);
-		bookAccess.add(book3.getNumberISBN(), book3);
+		bookAccess.add(book1.getISBNNumber(), book1);
+		bookAccess.add(book2.getISBNNumber(), book2);
+		bookAccess.add(book3.getISBNNumber(), book3);
 	}
 	
 	public static BookController getInstance() {return instance;}
 	
-	public DataAccess<Integer, Book> getBookAccess() {
+	public DataAccess<String, Book> getBookAccess() {
 		return bookAccess;
 	}
 
-	public void setBookAccess(DataAccess<Integer, Book> bookAccess) {
+	public void setBookAccess(DataAccess<String, Book> bookAccess) {
 		this.bookAccess = bookAccess;
 	}
 	
-	public Book getBookByISBN(Integer ISBN) {
+	public Book getBookByISBN(String ISBN) {
 		return bookAccess.get(ISBN);
 	}
 
-	public boolean addBookCopy(Integer isbn) {
+	public boolean addBookCopy(String isbn) {
 		Book book = bookAccess.get(isbn);
 		if (book == null) {
 			System.out.println("no this book with ISBN" + isbn);

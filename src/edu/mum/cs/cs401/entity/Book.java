@@ -2,7 +2,7 @@ package edu.mum.cs.cs401.entity;
 
 public class Book {
 	private String title;
-	private int ISBNNumber;
+	private String ISBNNumber;
 //	TODO: unlock later when author is implemented
 //	private List<Author> authorList;
 	private boolean availability;
@@ -12,15 +12,12 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getISBNNumber() {
+	public String getISBNNumber() {
 		return ISBNNumber;
 	}
-	public Integer getNumberISBN() {
-		return new Integer(ISBNNumber);
-	}
 	
-	public void setISBNNumber(int iSBNNumber) {
-		ISBNNumber = iSBNNumber;
+	public void setISBNNumber(String ISBN) {
+		this.ISBNNumber = ISBN;
 	}
 	public boolean isAvailability() {
 		return availability;
@@ -29,7 +26,7 @@ public class Book {
 		this.availability = availability;
 	}
 	
-	public Book(int ISBN, String title, boolean availability) {
+	public Book(String ISBN, String title, boolean availability) {
 		this.ISBNNumber = ISBN;
 		this.title = title;
 		this.availability = availability; 
