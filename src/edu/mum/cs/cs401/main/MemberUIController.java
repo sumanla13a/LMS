@@ -16,7 +16,8 @@ import javafx.scene.control.*;
 
 public class MemberUIController
     implements Initializable {
-
+	
+	@FXML private TextField idText;
 	@FXML private Button myButton; // Value injected by FXMLLoader
 	@FXML private TextField firstNameText;
 	@FXML private TextField lastNameText;
@@ -25,6 +26,7 @@ public class MemberUIController
 	@FXML private TextField zipAddressText;
 	@FXML private TextField phoneNoText;
 	@FXML private TextField stateAddressText;
+
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -35,6 +37,7 @@ public class MemberUIController
     }
     
     public void onSubmit(ActionEvent event) {
+    	System.out.println(idText.getText());
         System.out.println(firstNameText.getText());
         System.out.println(lastNameText.getText());
         System.out.println(phoneNoText.getText());
