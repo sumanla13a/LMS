@@ -4,6 +4,8 @@ package edu.mum.cs.cs401.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.prism.paint.Color;
+
 import edu.mum.cs.cs401.entity.Book;
 
 import edu.mum.cs.cs401.controller.BookController;
@@ -53,8 +55,10 @@ public class BookUIController implements Initializable {
         if (result == true) {
         	Book book = bookContr.getBookAccess().get(ISBNStr);
         	addBookResultLabel.setText(book.toString());
+        	addBookResultLabel.setTextFill(javafx.scene.paint.Color.web("#0076a3"));
         } else {
         	addBookResultLabel.setText("book not fund");
+        	addBookResultLabel.setTextFill(javafx.scene.paint.Color.web("#0076a3"));
         }
     }
 
