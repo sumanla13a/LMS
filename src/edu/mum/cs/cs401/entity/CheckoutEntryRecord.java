@@ -1,32 +1,37 @@
 package edu.mum.cs.cs401.entity;
+import java.time.LocalDate;
 import java.util.*;
 public class CheckoutEntryRecord {
-	private Date dueDate;
-	private Date checkoutDate;
-	private Book checkoutBook;
-	private Member currentMember;
-	public Date getDueDate() {
+	private LocalDate dueDate;
+	private LocalDate checkoutDate;
+	private String ISBNNumber;
+	private String currentMemberId;
+
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
-	public Date getCheckoutDate() {
+	
+	public LocalDate getCheckoutDate() {
 		return checkoutDate;
 	}
-	public void setCheckoutDate(Date checkoutDate) {
+	public void setCheckoutDate(LocalDate checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
-	public Book getCheckoutBook() {
-		return checkoutBook;
+
+	public String getCurrentMemberId() {
+		return currentMemberId;
 	}
-	public void setCheckoutBook(Book checkoutBook) {
-		this.checkoutBook = checkoutBook;
+	public void setCurrentMemberId(String currentMemberId) {
+		this.currentMemberId = currentMemberId;
 	}
-	public Member getCurrentMember() {
-		return currentMember;
+
+	public String getISBNNumber() {
+		return this.ISBNNumber;
 	}
-	public void setCurrentMember(Member currentMember) {
-		this.currentMember = currentMember;
+	public void setISBNNumber(String iSBNNumber) {
+		ISBNNumber = iSBNNumber;
 	}
 }

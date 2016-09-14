@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.mum.cs.cs401.main.CheckoutUIController">
    <children>
       <GridPane hgap="5.0" vgap="10.0" AnchorPane.bottomAnchor="1000.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
         <columnConstraints>
@@ -15,24 +16,33 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="99.0" minHeight="0.0" prefHeight="71.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="210.0" minHeight="4.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="294.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="210.0" minHeight="4.0" prefHeight="37.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label layoutX="20.0" layoutY="20.0" text="Welcome" />
-            <Label text="User name:" GridPane.rowIndex="1" />
-            <Label text="Password:" GridPane.rowIndex="2" />
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label layoutX="20.0" layoutY="20.0" text="Checkout A Book">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label text="Book ISBN" GridPane.rowIndex="2" />
+            <Label text="Checkout Date" GridPane.rowIndex="3" />
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <Button mnemonicParsing="false" text="Submit" textFill="#042bc9">
+                  <Button fx:id="checkoutBtn" mnemonicParsing="false" onAction="#onCheckout" text="Submit" textFill="#042bc9">
                      <HBox.margin>
-                        <Insets left="220.0" />
+                        <Insets left="231.0" />
                      </HBox.margin></Button>
                </children>
             </HBox>
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="bookISBNText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Due Date" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dueDate" prefHeight="25.0" prefWidth="286.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="checkoutDate" prefHeight="25.0" prefWidth="286.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Member Id" GridPane.rowIndex="1" />
+            <TextField fx:id="memberIdText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
