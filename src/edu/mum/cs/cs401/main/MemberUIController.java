@@ -8,43 +8,57 @@ package edu.mum.cs.cs401.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import edu.mum.cs.cs401.controller.MemberController;
+import edu.mum.cs.cs401.entity.Address;
+import edu.mum.cs.cs401.entity.Member;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
+public class MemberUIController implements Initializable {
+	MemberController ctrl = MemberController.getInstance();
 
-public class MemberUIController
-    implements Initializable {
-	
-	@FXML private TextField idText;
-	@FXML private Button myButton; // Value injected by FXMLLoader
-	@FXML private TextField firstNameText;
-	@FXML private TextField lastNameText;
-	@FXML private TextField streetAddressText;
-	@FXML private TextField cityAddressText;
-	@FXML private TextField zipAddressText;
-	@FXML private TextField phoneNoText;
-	@FXML private TextField stateAddressText;
+	@FXML
+	private TextField idText;
+	@FXML
+	private TextField firstNameText;
+	@FXML
+	private TextField lastNameText;
+	@FXML
+	private TextField phoneNumberText;
 
+	@FXML
+	private TextField streetAddressText;
+	@FXML
+	private TextField cityAddressText;
+	@FXML
+	private TextField stateAddressText;
+	@FXML
+	private TextField zipAddressText;
 
-    @Override // This method is called by the FXMLLoader when initialization is complete
-    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        assert myButton != null : "fx:id=\"myButton\" was not injected: check your FXML file 'simple.fxml'.";
+	@Override // This method is called by the FXMLLoader when initialization is
+	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
-        // initialize your logic here: all @FXML variables will have been injected
+	}
 
-    }
-    
-    public void onSubmit(ActionEvent event) {
-    	System.out.println(idText.getText());
-        System.out.println(firstNameText.getText());
-        System.out.println(lastNameText.getText());
-        System.out.println(phoneNoText.getText());
-        System.out.println(streetAddressText.getText());
-        System.out.println(cityAddressText.getText());
-        System.out.println(stateAddressText.getText());
-        System.out.println(zipAddressText.getText());
-    }
+	public void onSubmit(ActionEvent event) {
+		Address address = new Address(streetAddressText.getText(), cityAddressText.getText(),
+				stateAddressText.getText(), zipAddressText.getText());
+
+		Member member = new Member();
+		member.setId(idText.getText());
+		member.setFirstName(firstNameText.getText());
+		member.setLastName(lastNameText.getText());
+		member.setPhoneNumber(phoneNumberText.getText());
+		member.setAddress(address);
+
+		ctrl.addNewMember(member);
+
+		for (Member m : ctrl.getAll()) {
+			System.out.println(m.getFirstName());
+		}
+	}
 
 }

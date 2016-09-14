@@ -39,7 +39,7 @@
             <TextField fx:id="firstNameText" onAction="#onSubmit" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="lastNameText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Phone Number" GridPane.rowIndex="4" />
-            <TextField fx:id="phoneNoText" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="phoneNumberText" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Address" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="17.0" />
