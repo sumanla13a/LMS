@@ -25,13 +25,14 @@ public class Util {
 		UserController userCtrl = UserController.getInstance();
 		MemberController memberCtrl = MemberController.getInstance();
 		BookController bookCtrl = BookController.getInstance();
+		
 		userCtrl.addNew(new User("super", "super", "Yoseph Solomon", "admin,lib"));
 		userCtrl.addNew(new User("admin", "admin", "Suman Lama", "admin"));
 		userCtrl.addNew(new User("lib", "lib", "Alex Xie", "lib"));
 
-		memberCtrl.addNewMember(new Member("980001", "Alex", "Xie", "641 123 4567", null));
-		memberCtrl.addNewMember(new Member("980002", "Suman", "Lama", "641 231 9876", null));
-		memberCtrl.addNewMember(new Member("980003", "Yoseph", "Solomon", "641 321 3456", null));
+		memberCtrl.addNewMember(new Member("981", "Alex", "Xie", "641 123 4567", null));
+		memberCtrl.addNewMember(new Member("982", "Suman", "Lama", "641 231 9876", null));
+		memberCtrl.addNewMember(new Member("983", "Yoseph", "Solomon", "641 321 3456", null));
 		
 		//Adding dummy books
 		bookCtrl.addBook(new Book("1", "Java: The Complete Reference, Ninth Edition", true));

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import edu.mum.cs.cs401.controller.MemberController;
 import edu.mum.cs.cs401.controller.UserController;
 import edu.mum.cs.cs401.controller.CheckoutRecordController;
+import edu.mum.cs.cs401.entity.CheckoutEntryRecord;
 import edu.mum.cs.cs401.entity.CheckoutRecord;
 import edu.mum.cs.cs401.entity.Member;
 import javafx.collections.FXCollections;
@@ -43,7 +44,15 @@ public class CheckoutListUIController implements Initializable {
 	private void load() {
 		for (CheckoutRecord m : checkoutRecordCtrl.getAll()) {
 			if (memberIdText.getText().isEmpty() || memberIdText.getText().equals(m.getCurrentMemberId())) {
-				checkoutListTextArea.appendText(m.toString());
+				//checkoutListTextArea.appendText(m.toString());
+				
+				//checkoutListTextArea.appendText(m.getCurrentMemberId());
+				Member member = ctrl.getMemberById(m.getCurrentMemberId());
+				checkoutListTextArea.appendText(member.getId() + ": " + member.getFirstName() + " " + member.getLastName());
+				checkoutListTextArea.appendText("\n");
+				for(CheckoutEntryRecord r: m.getCheckoutEntryList()){
+					checkoutListTextArea.appendText(r.getBookCopy().getBook().getISBN() + "\n");
+				}
 				checkoutListTextArea.appendText("\n");
 			}
 		}
