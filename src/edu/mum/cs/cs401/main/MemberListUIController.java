@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import edu.mum.cs.cs401.controller.MemberController;
 import edu.mum.cs.cs401.controller.UserController;
+import edu.mum.cs.cs401.controller.CheckoutRecordController;
 import edu.mum.cs.cs401.entity.Member;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +27,7 @@ public class MemberListUIController implements Initializable {
 	private TableColumn<Member, String> firstNameColumn;
 	@FXML
 	private TableColumn<Member, String> lastNameColumn;
-
+	private CheckoutRecordController checkoutRecordCtrl = CheckoutRecordController.getInstance();
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("lastName"));
@@ -35,6 +36,8 @@ public class MemberListUIController implements Initializable {
 		    if (newSelection != null) {
 		        System.out.println(newSelection);
 		    }
+    
+		    System.out.println(checkoutRecordCtrl.getCheckoutRecordByUserId(newSelection.getId()));
 		});
 		
 		load();
@@ -50,7 +53,6 @@ public class MemberListUIController implements Initializable {
 			memberList.add(m);
 			System.out.println(m.toString());
 		}
-
 		tblMembers.setItems(memberList);
 	}
 }
