@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Book {
 	private String title;
-	private String ISBNNumber;
+	private String ISBN;
 //	TODO: unlock later when author is implemented
 	private List<Author> authorList;
 
@@ -25,12 +25,12 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getISBNNumber() {
-		return this.ISBNNumber;
+	public String getISBN() {
+		return this.ISBN;
 	}
 	
-	public void setISBNNumber(String ISBN) {
-		this.ISBNNumber = ISBN;
+	public void setISBN(String ISBN) {
+		this.ISBN = ISBN;
 	}
 	public boolean isAvailability() {
 		return availability;
@@ -40,7 +40,7 @@ public class Book {
 	}
 	
 	public Book(String ISBN, String title, boolean availability) {
-		this.ISBNNumber = ISBN;
+		this.ISBN = ISBN;
 		this.title = title;
 		this.availability = availability; 
 
@@ -51,7 +51,7 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return "Book [title= " + title + ", ISBNNumber=" + ISBNNumber + ","
+		return "Book [title= " + title + ", ISBN=" + ISBN + ","
 				+ " availability=" + availability + ", copyNum = " + copyList.size() + " ]";
 	}
 	

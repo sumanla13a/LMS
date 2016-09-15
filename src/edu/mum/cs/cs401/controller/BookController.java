@@ -18,9 +18,9 @@ public class BookController {
 		Book book2 = new Book("101", "book title2", true);
 		Book book3 = new Book("102", "book title3", true);
 		
-		bookAccess.add(book1.getISBNNumber(), book1);
-		bookAccess.add(book2.getISBNNumber(), book2);
-		bookAccess.add(book3.getISBNNumber(), book3);
+		bookAccess.add(book1.getISBN(), book1);
+		bookAccess.add(book2.getISBN(), book2);
+		bookAccess.add(book3.getISBN(), book3);
 	}
 	
 	public static BookController getInstance() {return instance;}
@@ -38,7 +38,7 @@ public class BookController {
 	}
 	
 	public void addBook(Book book) {
-		bookAccess.add(book.getISBNNumber(), book);
+		bookAccess.add(book.getISBN(), book);
 	}
 	
 	public boolean addBookCopy(String isbn) {
