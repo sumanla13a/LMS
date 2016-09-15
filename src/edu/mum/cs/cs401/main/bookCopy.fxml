@@ -27,7 +27,7 @@
             <Button mnemonicParsing="false" onAction="#lookUpBook" prefHeight="27.0" prefWidth="135.0" text="Look up Book" GridPane.rowIndex="2" />
             <TextField fx:id="ISBNTextField" promptText="Input ISBN" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="resultLabel" prefHeight="62.0" prefWidth="412.0" text="add book result" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label prefHeight="17.0" prefWidth="147.0" text="Welcome">
+            <Label prefHeight="17.0" prefWidth="147.0" text="Book Copy">
                <padding>
                   <Insets left="35.0" />
                </padding>

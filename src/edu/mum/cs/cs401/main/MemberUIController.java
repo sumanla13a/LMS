@@ -51,9 +51,9 @@ public class MemberUIController implements Initializable {
 
 		ctrl.addNewMember(member);
 
-		for (Member m : ctrl.getAll()) {
-			System.out.println(m.toString());
-		}
+//		for (Member m : ctrl.getAll()) {
+//			System.out.println(m.toString());
+//		}
 	}
 
 }

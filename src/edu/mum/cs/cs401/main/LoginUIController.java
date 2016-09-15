@@ -30,8 +30,6 @@ public class LoginUIController implements Initializable {
 
 		User user = userCtrl.getById(userNameText.getText());
 
-		System.out.println(user.getPassword());
-		System.out.println(passwordText.getText());
 		if (user == null || !user.getPassword().equals(passwordText.getText())) {
 			messageLabel.setText("Invalid user name or password!");
 		} else {

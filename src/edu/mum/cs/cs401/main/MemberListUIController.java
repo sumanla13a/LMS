@@ -34,10 +34,9 @@ public class MemberListUIController implements Initializable {
 
 		tblMembers.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 		    if (newSelection != null) {
-		        System.out.println(newSelection);
+		        System.out.println(newSelection);	        
+			    System.out.println(checkoutRecordCtrl.getCheckoutRecordByUserId(newSelection.getId()));
 		    }
-    
-		    System.out.println(checkoutRecordCtrl.getCheckoutRecordByUserId(newSelection.getId()));
 		});
 		
 		load();
@@ -51,7 +50,7 @@ public class MemberListUIController implements Initializable {
 		ObservableList<Member> memberList = FXCollections.observableArrayList();
 		for (Member m : ctrl.getAll()) {
 			memberList.add(m);
-			System.out.println(m.toString());
+			//System.out.println(m.toString());
 		}
 		tblMembers.setItems(memberList);
 	}

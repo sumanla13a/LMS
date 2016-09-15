@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -10,7 +11,7 @@
    <children>
       <BorderPane layoutX="0" layoutY="0" prefHeight="376.0" prefWidth="524.0">
          <top>
-            <Label text="Member List" BorderPane.alignment="CENTER">
+            <Label text="Member List" BorderPane.alignment="CENTER_LEFT">
                <font>
                   <Font size="24.0" />
                </font>
@@ -25,8 +26,14 @@
             </TableView>
          </center>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#onSubmit" text="Refresh" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#onSubmit" text="Refresh" BorderPane.alignment="CENTER_LEFT">
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin></Button>
          </bottom>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+         </padding>
       </BorderPane>
    </children>
 </AnchorPane>

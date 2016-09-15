@@ -46,6 +46,7 @@ public class Main extends Application {
 		Parent member = FXMLLoader.load(Main.class.getResource("member.fxml"));
 		Parent memberList = FXMLLoader.load(Main.class.getResource("memberList.fxml"));
 		Parent checkout = FXMLLoader.load(Main.class.getResource("checkout.fxml"));
+		Parent checkoutList = FXMLLoader.load(Main.class.getResource("checkoutList.fxml"));
 		Parent book = FXMLLoader.load(Main.class.getResource("book.fxml"));
 		Parent bookCopy = FXMLLoader.load(Main.class.getResource("bookCopy.fxml"));
 
@@ -86,7 +87,7 @@ public class Main extends Application {
 		Menu menuMember = new Menu("Member");
 		Main.menuMember = menuMember;
 		MenuItem add = new MenuItem("Add", new ImageView(new Image("img/add.png")));
-		MenuItem listMember = new MenuItem("Member List", new ImageView(new Image("img/add.png")));
+		MenuItem listMember = new MenuItem("Member List", new ImageView(new Image("img/list.png")));
 		menuMember.getItems().addAll(add, listMember);
 
 		add.setOnAction(new EventHandler<ActionEvent>() {
@@ -110,14 +111,22 @@ public class Main extends Application {
 		// Checkout Menu
 		Menu menuCheckout = new Menu("Check Out");
 		Main.menuCheckout = menuCheckout;
-		MenuItem btnCheckout = new MenuItem("Add");
-		menuCheckout.getItems().addAll(btnCheckout);
+		MenuItem btnCheckout = new MenuItem("Add", new ImageView(new Image("img/add.png")));
+		MenuItem listCheckout = new MenuItem("Checkout List", new ImageView(new Image("img/list.png")));
+		menuCheckout.getItems().addAll(btnCheckout, listCheckout);
 
 		btnCheckout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent t) {
 				formContainer.getChildren().clear();
 				formContainer.getChildren().add(checkout);
+			}
+		});
+		listCheckout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(checkoutList);
 			}
 		});
 		menuBar.getMenus().addAll(menuCheckout);
