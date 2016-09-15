@@ -41,6 +41,10 @@ public class BookController {
 		bookAccess.add(book.getISBN(), book);
 	}
 	
+	public Collection<Book> getAll() {
+		return bookAccess.get();
+	}
+	
 	public boolean addBookCopy(String isbn) {
 		Book book = bookAccess.get(isbn);
 		if (book == null) {
