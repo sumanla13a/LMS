@@ -2,9 +2,17 @@ package edu.mum.cs.cs401.entity;
 
 public class BookCopy extends Book {
 	private int copyNumber;
-	private String ISBN;
 	private Book book;
+	private boolean isCheckedout;
 	
+	public boolean isCheckedout() {
+		return isCheckedout;
+	}
+
+	public void setCheckedout(boolean isCheckedout) {
+		this.isCheckedout = isCheckedout;
+	}
+
 	public BookCopy(Book book, int copyNumber) {
 		this.copyNumber = copyNumber;
 		this.setBook(book);
@@ -16,14 +24,6 @@ public class BookCopy extends Book {
 
 	public void setCopyNumber(int copyNumber) {
 		this.copyNumber = copyNumber;
-	}
-
-	public String getISBN() {
-		return this.ISBN;
-	}
-
-	public void setISBN(String iSBN) {
-		this.ISBN = iSBN;
 	}
 
 	public Book getBook() {
