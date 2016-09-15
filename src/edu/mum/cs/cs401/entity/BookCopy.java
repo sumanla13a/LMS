@@ -16,6 +16,7 @@ public class BookCopy extends Book {
 	public BookCopy(Book book, int copyNumber) {
 		this.copyNumber = copyNumber;
 		this.setBook(book);
+		this.isCheckedout = false;
 	}
 	
 	public int getCopyNumber() {

@@ -1,6 +1,6 @@
 package edu.mum.cs.cs401.controller;
 
-import java.util.Collection;
+import java.util.*;
 
 import edu.mum.cs.cs401.dataaccess.DataAccess;
 import edu.mum.cs.cs401.dataaccess.DataAccessImpl;
@@ -54,5 +54,13 @@ public class BookController {
 
 		System.out.println("book: " + book);
 		return true;
+	}
+	
+	public BookCopy getBookCopy(Book book) {
+		List<BookCopy> books = book.getCopyList();
+		for(BookCopy entry : books) {
+			if(!entry.isCheckedout()) return entry;
+		}
+		return null;
 	}
 }

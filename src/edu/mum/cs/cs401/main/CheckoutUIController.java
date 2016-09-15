@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import edu.mum.cs.cs401.controller.CheckoutController;
 import edu.mum.cs.cs401.controller.MemberController;
 import edu.mum.cs.cs401.controller.BookController;
+import edu.mum.cs.cs401.entity.Book;
+import edu.mum.cs.cs401.entity.BookCopy;
 import edu.mum.cs.cs401.entity.CheckoutEntryRecord;
 public class CheckoutUIController implements Initializable {
 	MemberController memberController = MemberController.getInstance();
@@ -44,19 +46,25 @@ public class CheckoutUIController implements Initializable {
 				&& memberId != null
 				&& coutDate != null
 				&& dDate != null) {
-
+			// Check if member exists
 			if(memberController.getMemberById(memberId) != null) {
+				// Check if book exists
 				if(bookController.getBookByISBN(bookISBN) != null) {
 					CheckoutEntryRecord newRecord = new CheckoutEntryRecord();
-//					get copy of a book
-//					BookCopy newBookCopy = bookCopyController.getBook();
-//					newRecord.setISBNNumber(newBookCopy);
-					newRecord.setCheckoutDate(coutDate);
-					newRecord.setCurrentMemberId(memberId);
-					newRecord.setDueDate(dDate);
-				
-					checkoutController.addRecord(newRecord);
-					errorLabel.setText("");
+					Book currentBook = bookController.getBookByISBN(bookISBN);
+					BookCopy newBookCopy = bookController.getBookCopy(currentBook);
+					// Check if any copy is not checked out
+					if(newBookCopy != null) {
+						newRecord.setBookCopy(newBookCopy);
+						newRecord.setCheckoutDate(coutDate);
+						newRecord.setCurrentMemberId(memberId);
+						newRecord.setDueDate(dDate);
+						checkoutController.addRecord(newRecord);
+						newBookCopy.setCheckedout(true);
+						errorLabel.setText("");
+					} else {
+						errorLabel.setText("All books are currently checkout");
+					}
 				} else {
 					errorLabel.setText("Book doesn't exist in the system");
 				}

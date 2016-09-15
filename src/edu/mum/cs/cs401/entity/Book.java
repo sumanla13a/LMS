@@ -9,6 +9,14 @@ public class Book {
 	private List<Author> authorList;
 
 	private List<BookCopy> copyList = new ArrayList<BookCopy>();
+	public List<BookCopy> getCopyList() {
+		return copyList;
+	}
+
+	public void setCopyList(List<BookCopy> copyList) {
+		this.copyList = copyList;
+	}
+
 	private boolean availability;
 	
 	public void addBookCopy(BookCopy bookCopy) {
