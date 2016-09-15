@@ -3,7 +3,7 @@ package edu.mum.cs.cs401.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 import edu.mum.cs.cs401.entity.Book;
-
+import edu.mum.cs.cs401.entity.BookCopy;
 import edu.mum.cs.cs401.controller.BookController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,13 +15,9 @@ import javafx.scene.control.TextField;
 public class BookCopyUIController implements Initializable {
 
 	@FXML
-	private TextField lookUpTextField;
+	private TextField ISBNTextField;
 	@FXML
-	private Label LookResultLabel;
-	@FXML
-	private TextField addBookTextField;
-	@FXML
-	private Label addBookResultLabel;
+	private Label resultLabel;
 	
 	private BookController bookContr = BookController.getInstance();
 	
@@ -30,35 +26,32 @@ public class BookCopyUIController implements Initializable {
     }
     
     public void lookUpBook(ActionEvent event) {
-        System.out.println("look up book ");
-        System.out.println("look " + lookUpTextField.getText());
+        System.out.println("look up with isbn: " + resultLabel.getText());
         
-        String ISBNStr = lookUpTextField.getText(); 
-        Book book = bookContr.getBookAccess().get(ISBNStr);
+        String ISBN = ISBNTextField.getText(); 
+        Book book = bookContr.getBookAccess().get(ISBN);
         if (book == null) {
-        	LookResultLabel.setText("book not fund");
-        	changeLabelColorwithResult(LookResultLabel, false);
+        	resultLabel.setText("book not fund");
+        	changeLabelColorwithResult(resultLabel, false);
         } else {
-			LookResultLabel.setText(book.toString());
-        	changeLabelColorwithResult(LookResultLabel, true);
+        	resultLabel.setText(book.toString());
+        	changeLabelColorwithResult(resultLabel, true);
         }
     }
     
     public void addBook(ActionEvent event) {
-        System.out.println("add one book");
-        System.out.println("add book copy ISBN: " + addBookTextField.getText());
+        System.out.println("add book copy with ISBN: " + ISBNTextField.getText());
         
-        String ISBNStr = addBookTextField.getText();
-        System.out.println("isbn is " + ISBNStr);
+        String ISBN = ISBNTextField.getText();
+        System.out.println("isbn is " + ISBN);
         
-        boolean result =  bookContr.addBookCopy(ISBNStr);
-        if (result == true) {
-        	Book book = bookContr.getBookAccess().get(ISBNStr);
-        	addBookResultLabel.setText(book.toString());
-        	changeLabelColorwithResult(addBookResultLabel, true);
+        BookCopy bookCopy =  bookContr.addBookCopy(ISBN);
+        if (bookCopy != null) {
+        	resultLabel.setText("add bookCopy success, copyNum is: " + bookCopy.getCopyNumber());
+        	changeLabelColorwithResult(resultLabel, true);
         } else {
-        	addBookResultLabel.setText("book not fund");
-        	changeLabelColorwithResult(addBookResultLabel, false);
+        	resultLabel.setText("book not fund");
+        	changeLabelColorwithResult(resultLabel, false);
         }
     }
     

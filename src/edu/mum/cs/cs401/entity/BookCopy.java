@@ -1,7 +1,7 @@
 package edu.mum.cs.cs401.entity;
 
-public class BookCopy extends Book {
-	private int copyNumber;
+public class BookCopy {
+	private String copyNumber;
 	private Book book;
 	private boolean isCheckedout;
 	
@@ -13,17 +13,17 @@ public class BookCopy extends Book {
 		this.isCheckedout = isCheckedout;
 	}
 
-	public BookCopy(Book book, int copyNumber) {
+	public BookCopy(Book book, String copyNumber) {
 		this.copyNumber = copyNumber;
 		this.setBook(book);
 		this.isCheckedout = false;
 	}
 	
-	public int getCopyNumber() {
+	public String getCopyNumber() {
 		return this.copyNumber;
 	}
 
-	public void setCopyNumber(int copyNumber) {
+	public void setCopyNumber(String copyNumber) {
 		this.copyNumber = copyNumber;
 	}
 

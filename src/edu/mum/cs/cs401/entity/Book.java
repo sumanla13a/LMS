@@ -52,7 +52,7 @@ public class Book {
 		this.title = title;
 		this.availability = availability; 
 
-		BookCopy bookCopy = new BookCopy(this, 100);
+		BookCopy bookCopy = new BookCopy(this, "100");
 		addBookCopy(bookCopy);
 	}
 	public Book(){}

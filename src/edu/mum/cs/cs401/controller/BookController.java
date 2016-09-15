@@ -11,7 +11,6 @@ public class BookController {
 	private static BookController instance = new BookController();
 
 	private DataAccess<String, Book> bookAccess = new DataAccessImpl<String, Book>();
-	private DataAccess<String, Integer> bookCopyAccess = new DataAccessImpl<String, Integer>();
 	
 	private BookController() {
 		Book book1 = new Book("100", "book title1", true);
@@ -45,19 +44,19 @@ public class BookController {
 		return bookAccess.get();
 	}
 	
-	public boolean addBookCopy(String isbn) {
+	public BookCopy addBookCopy(String isbn) {
 		Book book = bookAccess.get(isbn);
 		if (book == null) {
 			System.out.println("no this book with ISBN: " + isbn);
-			return false;
+			return null;
 		}
 		
 		int copyNum = book.getCopyNumber();
-		book.addBookCopy(new BookCopy(book, copyNum));
+		String str = Integer.toString(copyNum);
+		BookCopy bookCopy = new BookCopy(book, str); 
+		book.addBookCopy(bookCopy);
 
-
-		System.out.println("book: " + book);
-		return true;
+		return bookCopy;
 	}
 	
 	public BookCopy getBookCopy(Book book) {
