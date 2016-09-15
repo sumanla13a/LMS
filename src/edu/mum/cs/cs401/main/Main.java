@@ -49,6 +49,7 @@ public class Main extends Application {
 		Parent checkoutList = FXMLLoader.load(Main.class.getResource("checkoutList.fxml"));
 		Parent book = FXMLLoader.load(Main.class.getResource("book.fxml"));
 		Parent bookCopy = FXMLLoader.load(Main.class.getResource("bookCopy.fxml"));
+		Parent bookList = FXMLLoader.load(Main.class.getResource("bookList.fxml"));
 
 		Util.showModal(modalStage, "Login", login);
 		modalStage.setOnCloseRequest(e -> primaryStage.close());
@@ -136,7 +137,8 @@ public class Main extends Application {
 		Menu menuBook = new Menu("Book");
 		MenuItem addBook = new MenuItem("Add Book", new ImageView(new Image("img/add.png")));
 		MenuItem addBookCopy = new MenuItem("Add Book Copy", new ImageView(new Image("img/add.png")));
-		menuBook.getItems().addAll(addBook, addBookCopy);
+		MenuItem listBook = new MenuItem("Book List", new ImageView(new Image("img/list.png")));
+		menuBook.getItems().addAll(addBook, addBookCopy, listBook);
 
 		addBook.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -151,6 +153,14 @@ public class Main extends Application {
 			public void handle(ActionEvent t) {
 				formContainer.getChildren().clear();
 				formContainer.getChildren().add(bookCopy);
+			}
+		});
+
+		listBook.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent t) {
+				formContainer.getChildren().clear();
+				formContainer.getChildren().add(bookList);
 			}
 		});
 		menuBar.getMenus().addAll(menuBook);

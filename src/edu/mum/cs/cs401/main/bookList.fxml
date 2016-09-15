@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.mum.cs.cs401.main.MemberListUIController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.mum.cs.cs401.main.BookListUIController">
    <children>
       <BorderPane layoutX="0" layoutY="0" prefHeight="376.0" prefWidth="524.0">
          <top>
@@ -20,10 +20,8 @@
          <center>
             <TableView fx:id="tblMembers" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="105.0" text="Id" />
-                <TableColumn fx:id="firstNameColumn" prefWidth="105.0" text="First Name" />
-                <TableColumn fx:id="lastNameColumn" prefWidth="103.0" text="Last Name" />
-                <TableColumn fx:id="phoneNumberColumn" prefWidth="105.0" text="Phone Number" />
+                <TableColumn fx:id="isbnColumn" prefWidth="105.0" text="ISBN" />
+                <TableColumn fx:id="titleColumn" prefWidth="105.0" text="Title" />
               </columns>
             </TableView>
          </center>

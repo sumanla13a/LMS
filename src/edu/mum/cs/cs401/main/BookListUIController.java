@@ -6,7 +6,9 @@ import java.util.ResourceBundle;
 
 import edu.mum.cs.cs401.controller.MemberController;
 import edu.mum.cs.cs401.controller.UserController;
+import edu.mum.cs.cs401.controller.BookController;
 import edu.mum.cs.cs401.controller.CheckoutRecordController;
+import edu.mum.cs.cs401.entity.Book;
 import edu.mum.cs.cs401.entity.Member;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,31 +21,22 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class MemberListUIController implements Initializable {
-	MemberController ctrl = MemberController.getInstance();
+public class BookListUIController implements Initializable {
+	BookController ctrl = BookController.getInstance();
 	@FXML
-	private TableView<Member> tblMembers;
+	private TableView<Book> tblMembers;
 	@FXML
-	private TableColumn<Member, String> idColumn;
+	private TableColumn<Book, String> isbnColumn;
 	@FXML
-	private TableColumn<Member, String> firstNameColumn;
-	@FXML
-	private TableColumn<Member, String> lastNameColumn;
-	@FXML
-	private TableColumn<Member, String> phoneNumberColumn;
-	
-	private CheckoutRecordController checkoutRecordCtrl = CheckoutRecordController.getInstance();
+	private TableColumn<Book, String> titleColumn;
 	
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		firstNameColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("firstName"));
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("lastName"));
-		idColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("id"));
-		phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<Member, String>("phoneNumber"));
+		isbnColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("ISBN"));
+		titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 
 		tblMembers.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 		    if (newSelection != null) {
-		        System.out.println(newSelection);	        
-			    System.out.println(checkoutRecordCtrl.getCheckoutRecordByUserId(newSelection.getId()));
+//		        System.out.println(newSelection);	        
 		    }
 		});
 		
@@ -55,8 +48,8 @@ public class MemberListUIController implements Initializable {
 	}
 	
 	private void load(){
-		ObservableList<Member> memberList = FXCollections.observableArrayList();
-		for (Member m : ctrl.getAll()) {
+		ObservableList<Book> memberList = FXCollections.observableArrayList();
+		for (Book m : ctrl.getAll()) {
 			memberList.add(m);
 			//System.out.println(m.toString());
 		}

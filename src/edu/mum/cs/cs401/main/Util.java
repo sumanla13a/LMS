@@ -29,13 +29,13 @@ public class Util {
 		userCtrl.addNew(new User("admin", "admin", "Suman Lama", "admin"));
 		userCtrl.addNew(new User("lib", "lib", "Alex Xie", "lib"));
 
-		memberCtrl.addNewMember(new Member("980001", "Alex", "Xie", "", null));
-		memberCtrl.addNewMember(new Member("980002", "Suman", "Lama", "", null));
-		memberCtrl.addNewMember(new Member("980003", "Yoseph", "Solomon", "", null));
+		memberCtrl.addNewMember(new Member("980001", "Alex", "Xie", "641 123 4567", null));
+		memberCtrl.addNewMember(new Member("980002", "Suman", "Lama", "641 231 9876", null));
+		memberCtrl.addNewMember(new Member("980003", "Yoseph", "Solomon", "641 321 3456", null));
 		
 		//Adding dummy books
-		bookCtrl.addBook(new Book("0", "Java: The Complete Reference, Ninth Edition", true));
-		bookCtrl.addBook(new Book("1", "50 Shades of Grey", true));
-		bookCtrl.addBook(new Book("2", "How to be a bad programmer: 101", true));
+		bookCtrl.addBook(new Book("1", "Java: The Complete Reference, Ninth Edition", true));
+		bookCtrl.addBook(new Book("2", "50 Shades of Grey", true));
+		bookCtrl.addBook(new Book("3", "How to be a bad programmer: 101", true));
 }
 }
