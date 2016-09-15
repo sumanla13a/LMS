@@ -5,6 +5,7 @@ import java.util.Collection;
 import edu.mum.cs.cs401.dataaccess.DataAccess;
 import edu.mum.cs.cs401.dataaccess.DataAccessImpl;
 import edu.mum.cs.cs401.entity.Book;
+import edu.mum.cs.cs401.entity.BookCopy;
 
 public class BookController {
 	private static BookController instance = new BookController();
@@ -13,9 +14,9 @@ public class BookController {
 	private DataAccess<String, Integer> bookCopyAccess = new DataAccessImpl<String, Integer>();
 	
 	private BookController() {
-		Book book1 = new Book("100", "title0", true);
-		Book book2 = new Book("101", "title1", true);
-		Book book3 = new Book("102", "title2", true);
+		Book book1 = new Book("100", "book title1", true);
+		Book book2 = new Book("101", "book title2", true);
+		Book book3 = new Book("102", "book title3", true);
 		
 		bookAccess.add(book1.getISBNNumber(), book1);
 		bookAccess.add(book2.getISBNNumber(), book2);
@@ -43,20 +44,15 @@ public class BookController {
 	public boolean addBookCopy(String isbn) {
 		Book book = bookAccess.get(isbn);
 		if (book == null) {
-			System.out.println("no this book with ISBN" + isbn);
+			System.out.println("no this book with ISBN: " + isbn);
 			return false;
 		}
+		
+		int copyNum = book.getCopyNumber();
+		book.addBookCopy(new BookCopy(book, copyNum));
 
-		Integer num = bookCopyAccess.get(isbn);
-		if (num == null) {
-			bookCopyAccess.add(isbn, new Integer(1));
-			return true;
-		}
 
-		int updateNum = num.intValue() + 1;
-		bookCopyAccess.update(isbn, new Integer(updateNum));
+		System.out.println("book: " + book);
 		return true;
 	}
-	
-//	public BookCopy getBookCopyByNumber()
 }

@@ -1,11 +1,24 @@
 package edu.mum.cs.cs401.entity;
+import java.util.ArrayList;
 import java.util.List;
+
 public class Book {
 	private String title;
 	private String ISBNNumber;
 //	TODO: unlock later when author is implemented
 	private List<Author> authorList;
+
+	private List<BookCopy> copyList = new ArrayList<BookCopy>();
 	private boolean availability;
+	
+	public void addBookCopy(BookCopy bookCopy) {
+		copyList.add(bookCopy);
+	}
+	
+	public int getCopyNumber() {
+		return copyList.size();
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -15,7 +28,6 @@ public class Book {
 	public String getISBNNumber() {
 		return this.ISBNNumber;
 	}
-
 	
 	public void setISBNNumber(String ISBN) {
 		this.ISBNNumber = ISBN;
@@ -31,12 +43,16 @@ public class Book {
 		this.ISBNNumber = ISBN;
 		this.title = title;
 		this.availability = availability; 
+
+		BookCopy bookCopy = new BookCopy(this, 100);
+		addBookCopy(bookCopy);
 	}
 	public Book(){}
 	
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", ISBNNumber=" + ISBNNumber + ", availability=" + availability + "]";
+		return "Book [title= " + title + ", ISBNNumber=" + ISBNNumber + ","
+				+ " availability=" + availability + ", copyNum = " + copyList.size() + " ]";
 	}
 	
 }

@@ -1,11 +1,7 @@
 package edu.mum.cs.cs401.main;
 
-//import java.awt.print.Book;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import com.sun.prism.paint.Color;
-
 import edu.mum.cs.cs401.entity.Book;
 
 import edu.mum.cs.cs401.controller.BookController;
@@ -14,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+//import javafx.scene.paint.Color;
 
 public class BookUIController implements Initializable {
 
@@ -30,9 +27,6 @@ public class BookUIController implements Initializable {
 	
 	@Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-//        assert myButton != null : "fx:id=\"myButton\" was not injected: check your FXML file 'simple.fxml'.";
-
-        // initialize your logic here: all @FXML variables will have been injected
     }
     
     public void lookUpBook(ActionEvent event) {
@@ -41,7 +35,13 @@ public class BookUIController implements Initializable {
         
         String ISBNStr = lookUpTextField.getText(); 
         Book book = bookContr.getBookAccess().get(ISBNStr);
-        LookResultLabel.setText(book.toString());
+        if (book == null) {
+        	LookResultLabel.setText("book not fund");
+        	changeLabelColorwithResult(LookResultLabel, false);
+        } else {
+			LookResultLabel.setText(book.toString());
+        	changeLabelColorwithResult(LookResultLabel, true);
+        }
     }
     
     public void addBook(ActionEvent event) {
@@ -55,11 +55,19 @@ public class BookUIController implements Initializable {
         if (result == true) {
         	Book book = bookContr.getBookAccess().get(ISBNStr);
         	addBookResultLabel.setText(book.toString());
-        	addBookResultLabel.setTextFill(javafx.scene.paint.Color.web("#0076a3"));
+        	changeLabelColorwithResult(addBookResultLabel, true);
         } else {
         	addBookResultLabel.setText("book not fund");
-        	addBookResultLabel.setTextFill(javafx.scene.paint.Color.web("#0076a3"));
+        	changeLabelColorwithResult(addBookResultLabel, false);
         }
+    }
+    
+    private void changeLabelColorwithResult(Label label, boolean success) {
+    	if (success == true) {
+    		label.setTextFill(javafx.scene.paint.Color.web("#0076a3"));
+    	} else {
+    		label.setTextFill(javafx.scene.paint.Color.web("#eb290f"));
+    	}
     }
 
 }
