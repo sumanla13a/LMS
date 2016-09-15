@@ -30,7 +30,7 @@
             <Label text="User name:" GridPane.rowIndex="1" />
             <Label text="Password:" GridPane.rowIndex="2" />
             <TextField fx:id="userNameText" text="super" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passwordText" text="super" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <HBox GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <Button mnemonicParsing="false" onAction="#onSubmit" prefHeight="25.0" prefWidth="79.0" text="Submit" textFill="#042bc9">

@@ -11,11 +11,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginUIController implements Initializable {
 	@FXML
 	private TextField userNameText;
+	@FXML
+	private PasswordField  passwordText;
 	@FXML
 	private Label messageLabel;
 
@@ -27,7 +30,9 @@ public class LoginUIController implements Initializable {
 
 		User user = userCtrl.getById(userNameText.getText());
 
-		if (user == null) {
+		System.out.println(user.getPassword());
+		System.out.println(passwordText.getText());
+		if (user == null || !user.getPassword().equals(passwordText.getText())) {
 			messageLabel.setText("Invalid user name or password!");
 		} else {
 			Main.setCurrentUser(user);
